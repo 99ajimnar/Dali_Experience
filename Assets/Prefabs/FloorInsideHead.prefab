@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5591579718432945906}
   - component: {fileID: 8806388529727174999}
   - component: {fileID: 6760577025446415773}
+  - component: {fileID: 6102996757046376191}
   m_Layer: 0
   m_Name: FloorInsideHead
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6102996757046376191
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103309056853486664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -629719859055844128, guid: 89dcc9adb7b7d584ba6e7afe97a534f1, type: 3}

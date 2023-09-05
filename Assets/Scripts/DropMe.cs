@@ -26,15 +26,16 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
     }
     public void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Space))
-			RemoveLastChildObject();
+		if (this.gameObject.transform.childCount > 0)
+		{
+			if (Input.GetKeyDown(KeyCode.Space))
+				RemoveLastChildObject();
+
+						
+		}
 	}
     public void OnDrop(PointerEventData data)
 	{
-        //containerImage.color = normalColor;
-
-        //if (receivingImage == null) //Si no hay imagen
-        //	return;
         
 
         Vector2 localMousePosition;
@@ -49,11 +50,15 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
             {
                 GameObject newImageObject = Instantiate(imagenPrefab, GetComponentInParent<RectTransform>());
                 newImage = newImageObject.GetComponent<Image>();
+				
                 newImage.preserveAspect = true;
                 newImage.rectTransform.localPosition = localMousePosition;
 				
-				
-			}
+                Debug.Log("sizeDelta.x DropMe" + newImage.rectTransform.sizeDelta.x);
+                Debug.Log("sizeDelta.y DropMe" + newImage.rectTransform.sizeDelta.y);
+
+
+            }
 			else
 			{
                 GameObject newImageObject = Instantiate(imagenFondoPrefab, GetComponentInParent<RectTransform>());

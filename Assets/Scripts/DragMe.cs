@@ -36,8 +36,8 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		//image.SetNativeSize();
 		
 		var rectTransform = GetComponent<RectTransform>();
-		Debug.Log("sizeDelta.x" + rectTransform.sizeDelta.x);
-		Debug.Log("sizeDelta.y" + rectTransform.sizeDelta.y);
+		Debug.Log("sizeDelta.x DragMe" + rectTransform.sizeDelta.x);
+		Debug.Log("sizeDelta.y DragMe" + rectTransform.sizeDelta.y);
 		dimensiones.x = rectTransform.sizeDelta.x;
 		dimensiones.y = rectTransform.sizeDelta.y;
 

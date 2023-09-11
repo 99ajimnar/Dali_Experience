@@ -11,10 +11,12 @@ public class StartAnimation : MonoBehaviour
     [SerializeField] private string triggerAnimationName;
     [SerializeField] private Animator animator;
 
-
-    public void OnGrab()
+    private void Start()
     {
-        animator.SetTrigger(triggerAnimationName);
-      
+        GetComponent<XRSocketInteractor>().selectEntered.AddListener(OnGrab);
+    }
+    public void OnGrab(SelectEnterEventArgs args)
+    {    
+        animator.SetTrigger(triggerAnimationName);     
     }
 }

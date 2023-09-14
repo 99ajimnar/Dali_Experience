@@ -10,13 +10,16 @@ public class StartAnimation : MonoBehaviour
 
     [SerializeField] private string triggerAnimationName;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject clueObject;
 
     private void Start()
     {
         GetComponent<XRSocketInteractor>().selectEntered.AddListener(OnGrab);
     }
     public void OnGrab(SelectEnterEventArgs args)
-    {    
+    {
+        clueObject.SetActive(false);
         animator.SetTrigger(triggerAnimationName);     
     }
+    
 }

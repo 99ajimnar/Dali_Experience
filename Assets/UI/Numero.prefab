@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 280, y: 130}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4394203237352195623
 CanvasRenderer:
@@ -66,14 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=11><b><align=center>\xBFPuedes descubrir d\xF3nde colocar los relojes?</align></b></size>\n\n1.Descubre
-    el punto donde la naturaleza y el tiempo se fusionan. Coloca el reloj en la cara
-    que descansa en el suelo para representar la relaci\xF3n entre la vida y el paso
-    del tiempo.\n\n2.Coloca el reloj que se desintegra y se funde en el borde de
-    la mesa, simbolizando la decadencia y la transformaci\xF3n. Este reloj marca
-    la eternidad en constante cambio.\n\n3. Encuentra la rama suspendida en el aire,
-    donde el tiempo se mezcla con la naturaleza. Coloca el reloj aqu\xED para marcar
-    la fragilidad del tiempo.\n"
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 100668f5f5030ca4fa5542f4b20700ff, type: 2}
   m_sharedMaterial: {fileID: 9079999103284038615, guid: 100668f5f5030ca4fa5542f4b20700ff, type: 2}
@@ -100,15 +93,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -155,7 +148,7 @@ GameObject:
   - component: {fileID: 3576096203597601678}
   - component: {fileID: 5677032778725539795}
   m_Layer: 5
-  m_Name: CluesPanel
+  m_Name: Numero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +174,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 560.5, y: 328.5}
-  m_SizeDelta: {x: 300, y: 150}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5547033111626473995
 Canvas:
@@ -280,7 +273,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 150}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6283637268278548170
 CanvasRenderer:

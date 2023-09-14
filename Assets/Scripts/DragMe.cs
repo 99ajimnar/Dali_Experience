@@ -8,10 +8,16 @@ using UnityEngine.XR;
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	public bool dragOnSurfaces = true;
+	private Dictionary<int,GameObject> draggingIcons = new Dictionary<int, GameObject>();
+	private Dictionary<int, RectTransform> draggingPlanes = new Dictionary<int, RectTransform>();
+	//public Vector2 dimensiones;
 	
-	private Dictionary<int,GameObject> m_DraggingIcons = new Dictionary<int, GameObject>();
-	private Dictionary<int, RectTransform> m_DraggingPlanes = new Dictionary<int, RectTransform>();
-	public Vector2 dimensiones;
+
+	void Start()
+	{
+		//GameObject im = GameObject.FindGameObjectWithTag("imagenCargada");
+        
+	}
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
@@ -21,60 +27,64 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 		// We have clicked something that can be dragged.
 		// What we want to do is create an icon for this.
-		m_DraggingIcons[eventData.pointerId] = new GameObject("icon");
+		draggingIcons[eventData.pointerId] = new GameObject("icon");
 
-		m_DraggingIcons[eventData.pointerId].transform.SetParent (canvas.transform, false);
-		m_DraggingIcons[eventData.pointerId].transform.SetAsLastSibling();
+		draggingIcons[eventData.pointerId].transform.SetParent (canvas.transform, false);
+		draggingIcons[eventData.pointerId].transform.SetAsLastSibling();
 		
-		var image = m_DraggingIcons[eventData.pointerId].AddComponent<Image>();
+		var image = draggingIcons[eventData.pointerId].AddComponent<Image>();
 		// The icon will be under the cursor.
 		// We want it to be ignored by the event system.
-		var group = m_DraggingIcons[eventData.pointerId].AddComponent<CanvasGroup>();
+		var group = draggingIcons[eventData.pointerId].AddComponent<CanvasGroup>();
 		group.blocksRaycasts = false;
 
 		image.sprite = GetComponent<Image>().sprite;
-		//image.SetNativeSize();
+		
 		
 		var rectTransform = GetComponent<RectTransform>();
-		Debug.Log("sizeDelta.x DragMe" + rectTransform.sizeDelta.x);
-		Debug.Log("sizeDelta.y DragMe" + rectTransform.sizeDelta.y);
-		dimensiones.x = rectTransform.sizeDelta.x;
-		dimensiones.y = rectTransform.sizeDelta.y;
+		
+		
 
 		if (dragOnSurfaces)
-			m_DraggingPlanes[eventData.pointerId] = transform as RectTransform;
+			draggingPlanes[eventData.pointerId] = transform as RectTransform;
 		else
-			m_DraggingPlanes[eventData.pointerId]  = canvas.transform as RectTransform;
+			draggingPlanes[eventData.pointerId]  = canvas.transform as RectTransform;
 		
 		SetDraggedPosition(eventData);
-	}
+        
+
+    }
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		if (m_DraggingIcons[eventData.pointerId] != null)
+		if (draggingIcons[eventData.pointerId] != null)
+		{
 			SetDraggedPosition(eventData);
+		
+        }
 	}
 
 	private void SetDraggedPosition(PointerEventData eventData)
 	{
 		if (dragOnSurfaces && eventData.pointerEnter != null && eventData.pointerEnter.transform as RectTransform != null)
-			m_DraggingPlanes[eventData.pointerId] = eventData.pointerEnter.transform as RectTransform;
+			draggingPlanes[eventData.pointerId] = eventData.pointerEnter.transform as RectTransform;
 		
-		var rt = m_DraggingIcons[eventData.pointerId].GetComponent<RectTransform>();
+		var rt = draggingIcons[eventData.pointerId].GetComponent<RectTransform>();
 		Vector3 globalMousePos;
-		if (RectTransformUtility.ScreenPointToWorldPointInRectangle(m_DraggingPlanes[eventData.pointerId], eventData.position, eventData.pressEventCamera, out globalMousePos))
+		if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggingPlanes[eventData.pointerId], eventData.position, eventData.pressEventCamera, out globalMousePos))
 		{
 			rt.position = globalMousePos;
-			rt.rotation = m_DraggingPlanes[eventData.pointerId].rotation;
+			rt.rotation = draggingPlanes[eventData.pointerId].rotation;
 		}
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		if (m_DraggingIcons[eventData.pointerId] != null)
-			Destroy(m_DraggingIcons[eventData.pointerId]);
+		
+		if (draggingIcons[eventData.pointerId] != null)
+			Destroy(draggingIcons[eventData.pointerId]);
 
-		m_DraggingIcons[eventData.pointerId] = null;
+		draggingIcons[eventData.pointerId] = null;
 	}
 
 	static public T FindInParents<T>(GameObject go) where T : Component

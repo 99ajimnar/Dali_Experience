@@ -12,18 +12,7 @@ public class PlayRandomAudio : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
-        //Invoke method after 3 mins every 3 mins
-        //InvokeRepeating("PlayAudio", 180.0f, delayBetweenAudio);
         Invoke("PlayFirstAudio", delayBetweenAudio);
-    }
-
-    private void PlayAudio()
-    {
-        AudioClip randomClip = audioClipsList[Random.Range(0, audioClipsList.Length)];
-
-        audioSource.clip = randomClip;
-        audioSource.Play();
     }
 
     private void PlayFirstAudio()

@@ -19,10 +19,6 @@ public class StartAudio : MonoBehaviour
 
             Debug.Log("PlayAudio");
             StartCoroutine(GalaTalkingCoroutine());
-            //if (!audioSource.isPlaying)
-            //{
-            //    audioSource.Play();
-            //}
         }
     }
     private IEnumerator GalaTalkingCoroutine()
@@ -31,6 +27,10 @@ public class StartAudio : MonoBehaviour
         audioSourceGala.Play();
         yield return new WaitForSeconds(audioSourceGala.clip.length + 2);
         audioSource.Play();
-
+        yield return new WaitForSeconds(audioSource.clip.length + 2);
+        if (this != null)
+        {
+            this.gameObject.SetActive(false);
+        }        
     }
 }

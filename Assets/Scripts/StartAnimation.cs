@@ -18,7 +18,8 @@ public class StartAnimation : MonoBehaviour
     }
     public void OnGrab(SelectEnterEventArgs args)
     {
-        clueObject.SetActive(false);
+        //clueObject.SetActive(false);
+        Destroy(clueObject);
         animator.SetTrigger(triggerAnimationName);     
     }
     

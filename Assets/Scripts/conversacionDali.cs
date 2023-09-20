@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class conversacionDali : MonoBehaviour
 {
     public AudioClip[] audioClips;
-    private int currentClipIndex = 0;
+    private int currentClipIndex = 8;
     private AudioSource audioSource;
     private bool isPlaying = false;
     [SerializeField] TextMeshProUGUI textDisplay;
     public TextMeshProUGUI[] textos;
-
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -23,6 +23,7 @@ public class conversacionDali : MonoBehaviour
         if (!isPlaying)
         {
             PlayNextClip();
+           
         }
     }
 
@@ -42,6 +43,11 @@ public class conversacionDali : MonoBehaviour
         else
         {
             Debug.Log("All audio clips have been played.");
+
+            
+            SceneManager.LoadScene("InsideHead_Scene");
+            
+
         }
     }
 
@@ -54,8 +60,6 @@ public class conversacionDali : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        // Puedes implementar lógica adicional aquí si deseas realizar acciones cuando el objeto salga del trigger.
-    }
+    
+    
 }

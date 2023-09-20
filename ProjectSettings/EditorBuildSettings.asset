@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Cabeza 1.unity
+    guid: 9c166e99c349d8e4ab107a0ba2e17ec0
+  - enabled: 1
+    path: Assets/Scenes/InsideHead_Scene.unity
+    guid: 4ef15e566229a7743b95d27d1dabc075
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e47a6782320d10e49aa04e8dc6354899, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 710ffd3bc3d295348a8cf931bc307a8a, type: 2}
